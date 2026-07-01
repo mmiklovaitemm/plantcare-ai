@@ -276,10 +276,10 @@ export default function AIChatPage() {
   const isLastStreaming = loading && messages[messages.length - 1]?.role === 'assistant'
 
   return (
-    <div className="flex flex-col h-screen lg:h-[calc(100vh)] pt-14 lg:pt-0 pb-20 lg:pb-0 lg:pl-0">
+    <div className="flex flex-col h-[calc(100vh-8.5rem)] lg:h-screen">
 
       {/* Header */}
-      <div className="flex-shrink-0 px-6 py-4 border-b border-[#E5EDE8] dark:border-[#2a3d2f] bg-white dark:bg-[#1a2e1f]">
+      <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-b border-[#E5EDE8] dark:border-[#2a3d2f] bg-white dark:bg-[#1a2e1f]">
         <div className="max-w-3xl mx-auto flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 bg-[#4A7C59] rounded-xl flex items-center justify-center">
@@ -328,7 +328,7 @@ export default function AIChatPage() {
       )}
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-6 py-6">
+      <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-6">
         <div className="max-w-3xl mx-auto space-y-4">
 
           {/* Empty state */}
@@ -402,7 +402,7 @@ export default function AIChatPage() {
       </div>
 
       {/* Input */}
-      <div className="flex-shrink-0 px-6 py-4 border-t border-[#E5EDE8] dark:border-[#2a3d2f] bg-white dark:bg-[#1a2e1f]">
+      <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-t border-[#E5EDE8] dark:border-[#2a3d2f] bg-white dark:bg-[#1a2e1f]">
         <div className="max-w-3xl mx-auto">
 
           {/* Image preview bar */}
@@ -452,7 +452,7 @@ export default function AIChatPage() {
               onKeyDown={handleKey}
               disabled={!hasKey || loading}
               placeholder={hasKey
-                ? (isLt ? 'Klausk apie savo augalus… (Enter siųsti)' : 'Ask about your plants… (Enter to send)')
+                ? (isLt ? 'Klausk apie savo augalus…' : 'Ask about your plants…')
                 : 'Add API key to enable chat'}
               rows={1}
               className="flex-1 px-4 py-3 border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-2xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#0f1a13] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all resize-none disabled:opacity-50"

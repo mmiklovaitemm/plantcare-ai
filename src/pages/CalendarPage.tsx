@@ -16,12 +16,13 @@ const ACTION: Record<CareActionType, {
   labelKey: string
   badge: string
   badgeProjected: string
+  dot: string
 }> = {
-  water:    { icon: Droplets,    labelKey: 'care.water',     badge: 'bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400',     badgeProjected: 'bg-blue-50 dark:bg-blue-950/20 text-blue-400 dark:text-blue-600 opacity-60' },
-  fertilize:{ icon: Sprout,     labelKey: 'care.fertilize', badge: 'bg-green-100 dark:bg-green-950/50 text-green-600 dark:text-green-400', badgeProjected: 'bg-green-50 dark:bg-green-950/20 text-green-400 opacity-60' },
-  mist:     { icon: Wind,       labelKey: 'care.mist',      badge: 'bg-cyan-100 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400',     badgeProjected: 'bg-cyan-50 dark:bg-cyan-950/20 text-cyan-400 opacity-60' },
-  repot:    { icon: PackagePlus,labelKey: 'care.repot',     badge: 'bg-orange-100 dark:bg-orange-950/50 text-orange-600 dark:text-orange-400', badgeProjected: 'bg-orange-50 dark:bg-orange-950/20 text-orange-400 opacity-60' },
-  prune:    { icon: Scissors,   labelKey: 'care.prune',     badge: 'bg-purple-100 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400', badgeProjected: 'bg-purple-50 dark:bg-purple-950/20 text-purple-400 opacity-60' },
+  water:    { icon: Droplets,    labelKey: 'care.water',     badge: 'bg-blue-100 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400',     badgeProjected: 'bg-blue-50 dark:bg-blue-950/20 text-blue-400 dark:text-blue-600 opacity-60', dot: 'bg-blue-500' },
+  fertilize:{ icon: Sprout,     labelKey: 'care.fertilize', badge: 'bg-green-100 dark:bg-green-950/50 text-green-600 dark:text-green-400', badgeProjected: 'bg-green-50 dark:bg-green-950/20 text-green-400 opacity-60', dot: 'bg-green-500' },
+  mist:     { icon: Wind,       labelKey: 'care.mist',      badge: 'bg-cyan-100 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400',     badgeProjected: 'bg-cyan-50 dark:bg-cyan-950/20 text-cyan-400 opacity-60', dot: 'bg-cyan-500' },
+  repot:    { icon: PackagePlus,labelKey: 'care.repot',     badge: 'bg-orange-100 dark:bg-orange-950/50 text-orange-600 dark:text-orange-400', badgeProjected: 'bg-orange-50 dark:bg-orange-950/20 text-orange-400 opacity-60', dot: 'bg-orange-500' },
+  prune:    { icon: Scissors,   labelKey: 'care.prune',     badge: 'bg-purple-100 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400', badgeProjected: 'bg-purple-50 dark:bg-purple-950/20 text-purple-400 opacity-60', dot: 'bg-purple-500' },
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -116,7 +117,7 @@ function DayPopover({ date, events, onLog, logging, onClose, locale, t }: {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: -6 }}
         transition={{ duration: 0.15 }}
-        className="absolute z-50 top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] shadow-xl p-4"
+        className="fixed sm:absolute z-50 left-1/2 -translate-x-1/2 bottom-6 sm:bottom-auto sm:top-full sm:mt-2 w-[calc(100vw-2rem)] max-w-xs sm:w-64 bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] shadow-xl p-4"
       >
         <p className="text-xs font-semibold text-[#6B7280] dark:text-[#9ca3af] mb-3 uppercase tracking-wide">
           {date.toLocaleDateString(locale, { weekday: 'short', month: 'short', day: 'numeric' })}
@@ -264,7 +265,7 @@ export default function CalendarPage() {
   ]
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-4 sm:p-6 max-w-5xl mx-auto">
 
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
@@ -288,12 +289,12 @@ export default function CalendarPage() {
       <div className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] overflow-hidden">
 
         {/* Calendar toolbar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#E5EDE8] dark:border-[#2a3d2f]">
+        <div className="flex items-center justify-between px-3 sm:px-6 py-4 border-b border-[#E5EDE8] dark:border-[#2a3d2f]">
           <button onClick={prev} className="p-2 rounded-xl hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] text-[#6B7280] transition-colors">
             <ChevronLeft className="w-4 h-4" />
           </button>
 
-          <h2 className="font-[family-name:var(--font-heading)] text-lg font-bold text-[#1A1A1A] dark:text-white">
+          <h2 className="font-[family-name:var(--font-heading)] text-base sm:text-lg font-bold text-[#1A1A1A] dark:text-white">
             {headerLabel}
           </h2>
 
@@ -350,7 +351,7 @@ export default function CalendarPage() {
                 <div
                   key={dateStr}
                   onClick={() => events.length > 0 && setSelectedDay(isSelected ? null : dateStr)}
-                  className={`relative min-h-[88px] p-2 border-b border-r border-[#E5EDE8] dark:border-[#2a3d2f] transition-colors ${
+                  className={`relative flex flex-col items-center sm:items-start min-h-[60px] sm:min-h-[88px] p-1 sm:p-2 border-b border-r border-[#E5EDE8] dark:border-[#2a3d2f] transition-colors ${
                     events.length > 0 ? 'cursor-pointer hover:bg-[#F0F7F2] dark:hover:bg-[#0f2a18]' : ''
                   } ${isSelected ? 'bg-[#F0F7F2] dark:bg-[#0f2a18]' : ''}`}
                 >
@@ -362,8 +363,27 @@ export default function CalendarPage() {
                     {date.getDate()}
                   </span>
 
+                  {/* Mobile: compact dots */}
                   {events.length > 0 && (
-                    <div className="mt-1 flex flex-wrap gap-1">
+                    <div className="mt-1 flex sm:hidden flex-wrap justify-center gap-1 max-w-full">
+                      {events.slice(0, 4).map(({ schedule, status, projected }, j) => {
+                        const cfg = ACTION[schedule.action_type]
+                        const dotCls = projected
+                          ? `${cfg.dot} opacity-40`
+                          : status === 'overdue' ? 'bg-red-500'
+                          : status === 'today'   ? 'bg-amber-500'
+                          : cfg.dot
+                        return <span key={j} className={`w-1.5 h-1.5 rounded-full ${dotCls}`} />
+                      })}
+                      {events.length > 4 && (
+                        <span className="text-[9px] leading-none text-[#6B7280] self-center">+{events.length - 4}</span>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Desktop: labelled badges */}
+                  {events.length > 0 && (
+                    <div className="mt-1 hidden sm:flex flex-wrap gap-1">
                       {events.slice(0, 3).map(({ schedule, plant, status, projected }, j) => {
                         const cfg = ACTION[schedule.action_type]
                         const Icon = cfg.icon
