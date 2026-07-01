@@ -98,7 +98,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="p-6 max-w-5xl mx-auto">
+    <div className="p-4 sm:p-6 max-w-5xl mx-auto">
 
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
         <h1 className="font-[family-name:var(--font-heading)] text-2xl font-bold text-[#1A1A1A] dark:text-white">
@@ -282,21 +282,21 @@ export default function SettingsPage() {
 
       {/* Account – full width bottom */}
       <motion.div custom={4} initial="hidden" animate="visible" variants={v}
-        className={`${card} flex items-center justify-between`}>
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-red-50 dark:bg-red-950/30 rounded-xl flex items-center justify-center">
+        className={`${card} flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4`}>
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-9 h-9 bg-red-50 dark:bg-red-950/30 rounded-xl flex items-center justify-center shrink-0">
             <LogOut className="w-4 h-4 text-red-500" />
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="text-sm font-semibold text-[#1A1A1A] dark:text-white">{t('settings.account')}</p>
-            <p className="text-xs text-[#6B7280] dark:text-[#9ca3af]">{user?.email}</p>
+            <p className="text-xs text-[#6B7280] dark:text-[#9ca3af] truncate">{user?.email}</p>
           </div>
         </div>
         <button
           onClick={() => supabase.auth.signOut()}
-          className="flex items-center gap-2 px-5 py-2.5 border border-red-200 dark:border-red-900 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full text-sm font-medium transition-all"
+          className="flex items-center justify-center gap-2 w-full sm:w-auto shrink-0 whitespace-nowrap px-5 py-2.5 border border-red-200 dark:border-red-900 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full text-sm font-medium transition-all"
         >
-          <LogOut className="w-4 h-4" />
+          <LogOut className="w-4 h-4 shrink-0" />
           {t('auth.signOut')}
         </button>
       </motion.div>
