@@ -185,6 +185,7 @@
     "cancel": "Atšaukti",
     "confirm": "Patvirtinti",
     "delete": "Ištrinti",
+    "deletePlantConfirm": "Ištrinti šį augalą? Šio veiksmo nebus galima atšaukti.",
     "edit": "Redaguoti",
     "back": "Atgal",
     "next": "Toliau",
