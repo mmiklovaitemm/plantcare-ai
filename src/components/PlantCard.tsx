@@ -49,6 +49,14 @@ export default function PlantCard({ plant, waterSchedule }: Props) {
     careStatus === 'today'   ? 'text-amber-500 dark:text-amber-400' :
     'text-[#6B7280] dark:text-[#9ca3af]'
 
+  function handleDelete(e: React.MouseEvent) {
+    e.stopPropagation()
+    if (deletePlant.isPending) return
+    if (window.confirm(t('common.deletePlantConfirm'))) {
+      deletePlant.mutate(plant.id)
+    }
+  }
+
   async function handleWater(e: React.MouseEvent) {
     e.stopPropagation()
     if (!waterSchedule) return
@@ -71,11 +79,12 @@ export default function PlantCard({ plant, waterSchedule }: Props) {
           <Leaf className="w-10 h-10 text-[#86EFAC]" />
         )}
 
-        {/* Delete btn */}
+        {/* Delete btn — always visible on touch/mobile, hover-revealed on desktop */}
         <button
-          onClick={() => deletePlant.mutate(plant.id)}
-          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1.5 rounded-lg bg-white/80 dark:bg-black/50 text-[#6B7280] hover:text-red-500 transition-all"
-          aria-label="Delete"
+          onClick={handleDelete}
+          disabled={deletePlant.isPending}
+          className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 p-1.5 rounded-lg bg-white/80 dark:bg-black/50 text-[#6B7280] hover:text-red-500 transition-all disabled:opacity-60"
+          aria-label={t('common.delete')}
         >
           <Trash2 className="w-3.5 h-3.5" />
         </button>
