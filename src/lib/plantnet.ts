@@ -14,7 +14,13 @@ export async function identifyPlant(file: File): Promise<PlantNetResult[]> {
   formData.append('images', file)
   formData.append('organs', 'auto')
 
-  const url = `/plantnet-api/v2/identify/all?api-key=${API_KEY}&lang=en&nb-results=3`
+  // In dev, Vite's proxy (see vite.config.ts) forwards to Pl@ntNet while
+  // stripping the Origin/Referer headers that Pl@ntNet rejects. In production
+  // that same stripping is done by the /api/plantnet edge function, which also
+  // injects the API key server-side.
+  const url = import.meta.env.DEV
+    ? `/plantnet-api/v2/identify/all?api-key=${API_KEY}&lang=en&nb-results=3`
+    : `/api/plantnet?lang=en&nb-results=3`
 
   const res = await fetch(url, { method: 'POST', body: formData })
 

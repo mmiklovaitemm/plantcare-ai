@@ -1,8 +1,7 @@
 {
   "rewrites": [
-    { "source": "/plantnet-api/:path*", "destination": "https://my-api.plantnet.org/:path*" },
     { "source": "/anthropic-api/:path*", "destination": "https://api.anthropic.com/:path*" },
     { "source": "/perenual-api/:path*", "destination": "https://perenual.com/:path*" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
