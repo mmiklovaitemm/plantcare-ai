@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Plus, Search, Leaf, Loader2 } from 'lucide-react'
 import { usePlants } from '../hooks/usePlants'
 import { useCareSchedules } from '../hooks/useCareSchedule'

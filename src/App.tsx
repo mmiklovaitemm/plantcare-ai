@@ -17,14 +17,6 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>
 }
 
-function PlaceholderPage({ title }: { title: string }) {
-  return (
-    <div className="flex items-center justify-center min-h-screen">
-      <p className="text-[#6B7280] dark:text-[#9ca3af] text-sm">{title} – coming soon</p>
-    </div>
-  )
-}
-
 export default function App() {
   return (
     <Routes>

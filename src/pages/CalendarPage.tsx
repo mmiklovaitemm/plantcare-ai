@@ -373,7 +373,7 @@ export default function CalendarPage() {
                           : status === 'today'   ? 'bg-amber-100 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400'
                           : cfg.badge
                         return (
-                          <span key={j} title={`${plant.nickname} – ${cfg.label}`}
+                          <span key={j} title={`${plant.nickname} – ${t(cfg.labelKey)}`}
                             className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[10px] font-medium leading-none ${cls} ${projected ? 'border border-dashed border-current' : ''}`}>
                             <Icon className="w-2.5 h-2.5" />
                             <span className="max-w-[44px] truncate">{plant.nickname}</span>

@@ -273,7 +273,7 @@ export default function EncyclopediaPage() {
       room: null,
       health_status: 'healthy',
       photo_url: image ?? null,
-      api_plant_id: String(plant.id),
+      api_plant_id: plant.id,
     })
 
     const today = new Date().toISOString().split('T')[0]

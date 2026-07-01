@@ -2,9 +2,8 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
   LayoutDashboard, Leaf, BookOpen, Calendar,
-  BookMarked, Settings, LogOut, Sun, Moon, Menu, X, Bot
+  BookMarked, Settings, LogOut, Sun, Moon, Bot
 } from 'lucide-react'
-import { useState } from 'react'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../hooks/useAuth'
 import { useTheme } from '../hooks/useTheme'
@@ -33,7 +32,6 @@ export default function Layout() {
   const { user } = useAuth()
   const { theme, toggle: toggleTheme } = useTheme()
   const navigate = useNavigate()
-  const [mobileOpen, setMobileOpen] = useState(false)
 
   const isLT = i18n.language.startsWith('lt')
 
