@@ -98,8 +98,8 @@ export default function AddPlantModal({ open, onClose }: Props) {
         }
       }
     } catch (err) {
-      const detail = err instanceof Error ? err.message : String(err)
-      setIdentifyError(`${t('addPlant.identifyError')} [${detail}]`)
+      console.error('Plant identification failed:', err)
+      setIdentifyError(t('addPlant.identifyError'))
     } finally {
       setIdentifying(false)
     }
