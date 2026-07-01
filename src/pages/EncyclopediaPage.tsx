@@ -115,7 +115,7 @@ function ModalImage({ image, name, onClose }: { image: string | null; name: stri
 
   if (!image || failed) {
     return (
-      <div className="w-full h-36 bg-[#E8F5EC] dark:bg-[#0f2a18] flex items-center justify-center relative">
+      <div className="w-full h-36 bg-[#E8F5EC] dark:bg-[#22252c] flex items-center justify-center relative">
         <Leaf className="w-12 h-12 text-[#86EFAC]" />
         <button onClick={onClose} className="absolute top-3 right-3 p-1.5 bg-black/20 rounded-lg text-[#4A7C59]">
           <X className="w-4 h-4" />
@@ -164,7 +164,7 @@ function DetailModal({ plant, onClose, onAdd, onAskAi, adding, added }: DetailMo
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md z-50 px-4"
       >
-        <div className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] shadow-xl overflow-hidden">
+        <div className="bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] shadow-xl overflow-hidden">
           <ModalImage image={image} name={plant.common_name} onClose={onClose} />
 
           <div className="p-6">
@@ -176,7 +176,7 @@ function DetailModal({ plant, onClose, onAdd, onAskAi, adding, added }: DetailMo
             </p>
 
             <div className="mt-5 space-y-3">
-              <div className="flex items-center gap-3 p-3 rounded-xl bg-[#F0F7F2] dark:bg-[#0f1a13]">
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-[#F0F7F2] dark:bg-[#101114]">
                 <Droplets className="w-4 h-4 text-[#4A7C59] flex-shrink-0" />
                 <div>
                   <p className="text-xs text-[#6B7280] dark:text-[#9ca3af]">{t('encyclopedia.watering')}</p>
@@ -185,7 +185,7 @@ function DetailModal({ plant, onClose, onAdd, onAskAi, adding, added }: DetailMo
               </div>
 
               {sunlight && (
-                <div className="flex items-center gap-3 p-3 rounded-xl bg-[#F0F7F2] dark:bg-[#0f1a13]">
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-[#F0F7F2] dark:bg-[#101114]">
                   <Sun className="w-4 h-4 text-amber-500 flex-shrink-0" />
                   <div>
                     <p className="text-xs text-[#6B7280] dark:text-[#9ca3af]">{t('encyclopedia.sunlight')}</p>
@@ -195,7 +195,7 @@ function DetailModal({ plant, onClose, onAdd, onAskAi, adding, added }: DetailMo
               )}
 
               {plant.cycle && (
-                <div className="flex items-center gap-3 p-3 rounded-xl bg-[#F0F7F2] dark:bg-[#0f1a13]">
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-[#F0F7F2] dark:bg-[#101114]">
                   <Leaf className="w-4 h-4 text-[#4A7C59] flex-shrink-0" />
                   <div>
                     <p className="text-xs text-[#6B7280] dark:text-[#9ca3af]">{t('encyclopedia.lifeCycle')}</p>
@@ -216,7 +216,7 @@ function DetailModal({ plant, onClose, onAdd, onAskAi, adding, added }: DetailMo
               </button>
               <button
                 onClick={() => onAskAi(plant)}
-                className="w-full py-2.5 rounded-full border border-[#4A7C59] text-[#4A7C59] hover:bg-[#F0F7F2] dark:hover:bg-[#0f2a18] text-sm font-medium transition-all flex items-center justify-center gap-2"
+                className="w-full py-2.5 rounded-full border border-[#4A7C59] text-[#4A7C59] hover:bg-[#F0F7F2] dark:hover:bg-[#22252c] text-sm font-medium transition-all flex items-center justify-center gap-2"
               >
                 <MessageSquare className="w-4 h-4" />
                 {t('encyclopedia.askAi')}
@@ -316,14 +316,14 @@ export default function EncyclopediaPage() {
           value={query}
           onChange={handleInput}
           placeholder={t('encyclopedia.search')}
-          className="w-full pl-11 pr-11 py-3 bg-white dark:bg-[#1a2e1f] border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-2xl text-sm text-[#1A1A1A] dark:text-white placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all shadow-sm"
+          className="w-full pl-11 pr-11 py-3 bg-white dark:bg-[#1a1c20] border border-[#E5EDE8] dark:border-[#2b2e35] rounded-2xl text-sm text-[#1A1A1A] dark:text-white placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all shadow-sm"
         />
       </div>
 
       {/* Empty state */}
       {!searched && (
         <div className="flex flex-col items-center justify-center py-20 text-center">
-          <div className="w-20 h-20 bg-[#E8F5EC] dark:bg-[#0f2a18] rounded-2xl flex items-center justify-center mb-4">
+          <div className="w-20 h-20 bg-[#E8F5EC] dark:bg-[#22252c] rounded-2xl flex items-center justify-center mb-4">
             <Search className="w-9 h-9 text-[#86EFAC]" />
           </div>
           <h3 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-[#1A1A1A] dark:text-white mb-1">
@@ -355,9 +355,9 @@ export default function EncyclopediaPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.04 }}
                 onClick={() => setSelected(plant)}
-                className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] overflow-hidden cursor-pointer hover:shadow-md hover:border-[#86EFAC] dark:hover:border-[#4A7C59] transition-all duration-200 group"
+                className="bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] overflow-hidden cursor-pointer hover:shadow-md hover:border-[#86EFAC] dark:hover:border-[#4A7C59] transition-all duration-200 group"
               >
-                <div className="w-full aspect-square bg-[#E8F5EC] dark:bg-[#0f2a18] flex items-center justify-center overflow-hidden">
+                <div className="w-full aspect-square bg-[#E8F5EC] dark:bg-[#22252c] flex items-center justify-center overflow-hidden">
                   <MemoPlantImage src={image} alt={plant.common_name} />
                 </div>
                 <div className="p-3">

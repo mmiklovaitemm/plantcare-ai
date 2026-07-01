@@ -148,19 +148,19 @@ export default function AddPlantModal({ open, onClose }: Props) {
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md z-50 px-4 max-h-[90vh] overflow-y-auto"
           >
-            <div className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] shadow-xl p-6">
+            <div className="bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] shadow-xl p-6">
 
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-[#E8F5EC] dark:bg-[#0f2a18] rounded-xl flex items-center justify-center">
+                  <div className="w-9 h-9 bg-[#E8F5EC] dark:bg-[#22252c] rounded-xl flex items-center justify-center">
                     <Leaf className="w-5 h-5 text-[#4A7C59]" />
                   </div>
                   <h2 className="font-[family-name:var(--font-heading)] text-lg font-bold text-[#1A1A1A] dark:text-white">
                     {t('collection.addPlant')}
                   </h2>
                 </div>
-                <button onClick={onClose} className="p-1.5 rounded-lg text-[#6B7280] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-colors">
+                <button onClick={onClose} className="p-1.5 rounded-lg text-[#6B7280] hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-colors">
                   <X className="w-4 h-4" />
                 </button>
               </div>
@@ -176,7 +176,7 @@ export default function AddPlantModal({ open, onClose }: Props) {
 
                   {photoPreview ? (
                     <div className="relative">
-                      <img src={photoPreview} alt="preview" className="w-full h-48 object-cover rounded-xl border border-[#E5EDE8] dark:border-[#2a3d2f]" />
+                      <img src={photoPreview} alt="preview" className="w-full h-48 object-cover rounded-xl border border-[#E5EDE8] dark:border-[#2b2e35]" />
                       <button type="button" onClick={() => { setPhotoFile(null); setPhotoPreview(null); setSuggestions([]) }}
                         className="absolute top-2 right-2 p-1 bg-black/50 rounded-lg text-white">
                         <X className="w-3.5 h-3.5" />
@@ -190,7 +190,7 @@ export default function AddPlantModal({ open, onClose }: Props) {
                     </div>
                   ) : (
                     <button type="button" onClick={() => fileRef.current?.click()}
-                      className="w-full h-36 border-2 border-dashed border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl flex flex-col items-center justify-center gap-2 text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59] hover:text-[#4A7C59] transition-all">
+                      className="w-full h-36 border-2 border-dashed border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl flex flex-col items-center justify-center gap-2 text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59] hover:text-[#4A7C59] transition-all">
                       <Camera className="w-6 h-6" />
                       <span className="text-sm">{t('addPlant.uploadPhoto')}</span>
                       <span className="text-xs">{t('addPlant.fileTypes')}</span>
@@ -203,7 +203,7 @@ export default function AddPlantModal({ open, onClose }: Props) {
                         <p className="text-xs text-[#6B7280] dark:text-[#9ca3af] font-medium">{t('addPlant.aiSuggestions')}</p>
                         {suggestions.map((s, i) => (
                           <button key={i} type="button" onClick={() => setNickname(s.name)}
-                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl border text-sm transition-all ${nickname === s.name ? 'border-[#4A7C59] bg-[#E8F5EC] dark:bg-[#0f2a18] text-[#4A7C59]' : 'border-[#E5EDE8] dark:border-[#2a3d2f] text-[#1A1A1A] dark:text-white hover:border-[#4A7C59]'}`}>
+                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl border text-sm transition-all ${nickname === s.name ? 'border-[#4A7C59] bg-[#E8F5EC] dark:bg-[#22252c] text-[#4A7C59]' : 'border-[#E5EDE8] dark:border-[#2b2e35] text-[#1A1A1A] dark:text-white hover:border-[#4A7C59]'}`}>
                             <span className="flex items-center gap-2">
                               {nickname === s.name && <CheckCircle2 className="w-3.5 h-3.5" />}
                               {s.name}
@@ -228,7 +228,7 @@ export default function AddPlantModal({ open, onClose }: Props) {
                   </label>
                   <input type="text" value={nickname} onChange={e => setNickname(e.target.value)} required
                     placeholder={t('addPlant.namePlaceholder')}
-                    className="w-full px-4 py-2.5 border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#0f1a13] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all" />
+                    className="w-full px-4 py-2.5 border border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#101114] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all" />
                 </div>
 
                 {/* Watering interval */}
@@ -239,7 +239,7 @@ export default function AddPlantModal({ open, onClose }: Props) {
                   <div className="grid grid-cols-3 gap-2">
                     {WATER_INTERVALS.map(({ days, key }) => (
                       <button key={days} type="button" onClick={() => setWaterInterval(days)}
-                        className={`py-2 px-2 rounded-xl text-xs font-medium border transition-all text-center ${waterInterval === days ? 'bg-[#4A7C59] text-white border-[#4A7C59]' : 'border-[#E5EDE8] dark:border-[#2a3d2f] text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59] hover:text-[#4A7C59]'}`}>
+                        className={`py-2 px-2 rounded-xl text-xs font-medium border transition-all text-center ${waterInterval === days ? 'bg-[#4A7C59] text-white border-[#4A7C59]' : 'border-[#E5EDE8] dark:border-[#2b2e35] text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59] hover:text-[#4A7C59]'}`}>
                         {t(key)}
                       </button>
                     ))}
@@ -258,7 +258,7 @@ export default function AddPlantModal({ open, onClose }: Props) {
                   <div className="flex flex-wrap gap-2">
                     {ROOM_KEYS.map(({ value, key }) => (
                       <button key={value} type="button" onClick={() => setRoom(room === value ? '' : value)}
-                        className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${room === value ? 'bg-[#4A7C59] text-white border-[#4A7C59]' : 'border-[#E5EDE8] dark:border-[#2a3d2f] text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59] hover:text-[#4A7C59]'}`}>
+                        className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${room === value ? 'bg-[#4A7C59] text-white border-[#4A7C59]' : 'border-[#E5EDE8] dark:border-[#2b2e35] text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59] hover:text-[#4A7C59]'}`}>
                         {t(key)}
                       </button>
                     ))}
@@ -275,7 +275,7 @@ export default function AddPlantModal({ open, onClose }: Props) {
                       { value: 'critical', key: 'health.critical', cls: 'text-red-600 border-red-200 bg-red-50 dark:bg-red-950/30 dark:border-red-900' },
                     ] as const).map(({ value, key, cls }) => (
                       <button key={value} type="button" onClick={() => setHealth(value)}
-                        className={`flex-1 py-2 rounded-xl text-xs font-medium border transition-all ${health === value ? cls + ' ring-2 ring-offset-1 ring-[#4A7C59]/30' : 'border-[#E5EDE8] dark:border-[#2a3d2f] text-[#6B7280] dark:text-[#9ca3af]'}`}>
+                        className={`flex-1 py-2 rounded-xl text-xs font-medium border transition-all ${health === value ? cls + ' ring-2 ring-offset-1 ring-[#4A7C59]/30' : 'border-[#E5EDE8] dark:border-[#2b2e35] text-[#6B7280] dark:text-[#9ca3af]'}`}>
                         {t(key)}
                       </button>
                     ))}
@@ -285,7 +285,7 @@ export default function AddPlantModal({ open, onClose }: Props) {
                 {/* Actions */}
                 <div className="flex gap-3 pt-1">
                   <button type="button" onClick={() => { reset(); onClose() }}
-                    className="flex-1 py-2.5 rounded-full border border-[#E5EDE8] dark:border-[#2a3d2f] text-sm font-medium text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-all">
+                    className="flex-1 py-2.5 rounded-full border border-[#E5EDE8] dark:border-[#2b2e35] text-sm font-medium text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-all">
                     {t('common.cancel')}
                   </button>
                   <button type="submit" disabled={isPending}

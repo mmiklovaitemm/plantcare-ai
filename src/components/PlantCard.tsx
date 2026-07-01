@@ -61,10 +61,10 @@ export default function PlantCard({ plant, waterSchedule }: Props) {
   }
 
   return (
-    <div className="group bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] p-5 hover:shadow-md hover:border-[#86EFAC] dark:hover:border-[#4A7C59] transition-all duration-200"
+    <div className="group bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] p-5 hover:shadow-md hover:border-[#86EFAC] dark:hover:border-[#4A7C59] transition-all duration-200"
     >
       {/* Photo */}
-      <div className="w-full aspect-square rounded-xl bg-[#F0F7F2] dark:bg-[#0f1a13] flex items-center justify-center mb-4 overflow-hidden relative">
+      <div className="w-full aspect-square rounded-xl bg-[#F0F7F2] dark:bg-[#101114] flex items-center justify-center mb-4 overflow-hidden relative">
         {plant.photo_url ? (
           <img src={plant.photo_url} alt={plant.nickname} className="w-full h-full object-cover" />
         ) : (

@@ -64,7 +64,7 @@ Give me a quick care tip and a motivating note for this week.`
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.45, duration: 0.4 }}
-      className="bg-gradient-to-br from-[#F0F7F2] to-white dark:from-[#0f2a18] dark:to-[#1a2e1f] rounded-2xl border border-[#C6E0CC] dark:border-[#2a3d2f] p-5"
+      className="bg-gradient-to-br from-[#F0F7F2] to-white dark:from-[#22252c] dark:to-[#1a1c20] rounded-2xl border border-[#C6E0CC] dark:border-[#2b2e35] p-5"
     >
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
@@ -79,7 +79,7 @@ Give me a quick care tip and a motivating note for this week.`
           onClick={generate}
           disabled={loading}
           title={isLt ? 'Atnaujinti' : 'Refresh'}
-          className="p-1.5 rounded-lg hover:bg-[#E8F5EC] dark:hover:bg-[#0f1a13] text-[#6B7280] hover:text-[#4A7C59] transition-colors disabled:opacity-40"
+          className="p-1.5 rounded-lg hover:bg-[#E8F5EC] dark:hover:bg-[#101114] text-[#6B7280] hover:text-[#4A7C59] transition-colors disabled:opacity-40"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
         </button>
@@ -91,7 +91,7 @@ Give me a quick care tip and a motivating note for this week.`
           {isLt ? 'Generuojama...' : 'Generating...'}
         </div>
       ) : summary ? (
-        <div className="text-sm text-[#374151] dark:text-[#d1fae5] leading-relaxed">
+        <div className="text-sm text-[#374151] dark:text-[#d1d5db] leading-relaxed">
           <ReactMarkdown
             components={{
               p: ({ children }) => <p className="mb-1 last:mb-0">{children}</p>,

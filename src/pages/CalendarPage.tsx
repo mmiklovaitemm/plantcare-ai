@@ -117,7 +117,7 @@ function DayPopover({ date, events, onLog, logging, onClose, locale, t }: {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: -6 }}
         transition={{ duration: 0.15 }}
-        className="fixed sm:absolute z-50 left-1/2 -translate-x-1/2 bottom-6 sm:bottom-auto sm:top-full sm:mt-2 w-[calc(100vw-2rem)] max-w-xs sm:w-64 bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] shadow-xl p-4"
+        className="fixed sm:absolute z-50 left-1/2 -translate-x-1/2 bottom-6 sm:bottom-auto sm:top-full sm:mt-2 w-[calc(100vw-2rem)] max-w-xs sm:w-64 bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] shadow-xl p-4"
       >
         <p className="text-xs font-semibold text-[#6B7280] dark:text-[#9ca3af] mb-3 uppercase tracking-wide">
           {date.toLocaleDateString(locale, { weekday: 'short', month: 'short', day: 'numeric' })}
@@ -132,7 +132,7 @@ function DayPopover({ date, events, onLog, logging, onClose, locale, t }: {
                 {plant.photo_url ? (
                   <img src={plant.photo_url} alt={plant.nickname} className="w-8 h-8 rounded-lg object-cover flex-shrink-0" />
                 ) : (
-                  <div className="w-8 h-8 rounded-lg bg-[#E8F5EC] dark:bg-[#0f2a18] flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-[#E8F5EC] dark:bg-[#22252c] flex items-center justify-center flex-shrink-0">
                     <Leaf className="w-4 h-4 text-[#86EFAC]" />
                   </div>
                 )}
@@ -286,11 +286,11 @@ export default function CalendarPage() {
         </button>
       </div>
 
-      <div className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] overflow-hidden">
+      <div className="bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] overflow-hidden">
 
         {/* Calendar toolbar */}
-        <div className="flex items-center justify-between px-3 sm:px-6 py-4 border-b border-[#E5EDE8] dark:border-[#2a3d2f]">
-          <button onClick={prev} className="p-2 rounded-xl hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] text-[#6B7280] transition-colors">
+        <div className="flex items-center justify-between px-3 sm:px-6 py-4 border-b border-[#E5EDE8] dark:border-[#2b2e35]">
+          <button onClick={prev} className="p-2 rounded-xl hover:bg-[#F0F7F2] dark:hover:bg-[#101114] text-[#6B7280] transition-colors">
             <ChevronLeft className="w-4 h-4" />
           </button>
 
@@ -300,30 +300,30 @@ export default function CalendarPage() {
 
           <div className="flex items-center gap-2">
             {/* View toggle */}
-            <div className="flex bg-[#F0F7F2] dark:bg-[#0f1a13] rounded-xl p-1 gap-1">
+            <div className="flex bg-[#F0F7F2] dark:bg-[#101114] rounded-xl p-1 gap-1">
               <button
                 onClick={() => { setView('month'); setAnchor(new Date(today.getFullYear(), today.getMonth(), 1)) }}
-                className={`p-1.5 rounded-lg transition-all ${view === 'month' ? 'bg-white dark:bg-[#1a2e1f] shadow-sm text-[#4A7C59]' : 'text-[#6B7280] hover:text-[#4A7C59]'}`}
+                className={`p-1.5 rounded-lg transition-all ${view === 'month' ? 'bg-white dark:bg-[#1a1c20] shadow-sm text-[#4A7C59]' : 'text-[#6B7280] hover:text-[#4A7C59]'}`}
                 title={t('calendar.monthView')}
               >
                 <LayoutGrid className="w-4 h-4" />
               </button>
               <button
                 onClick={() => { setView('week'); setAnchor(today) }}
-                className={`p-1.5 rounded-lg transition-all ${view === 'week' ? 'bg-white dark:bg-[#1a2e1f] shadow-sm text-[#4A7C59]' : 'text-[#6B7280] hover:text-[#4A7C59]'}`}
+                className={`p-1.5 rounded-lg transition-all ${view === 'week' ? 'bg-white dark:bg-[#1a1c20] shadow-sm text-[#4A7C59]' : 'text-[#6B7280] hover:text-[#4A7C59]'}`}
                 title={t('calendar.weekView')}
               >
                 <CalendarDays className="w-4 h-4" />
               </button>
             </div>
-            <button onClick={next} className="p-2 rounded-xl hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] text-[#6B7280] transition-colors">
+            <button onClick={next} className="p-2 rounded-xl hover:bg-[#F0F7F2] dark:hover:bg-[#101114] text-[#6B7280] transition-colors">
               <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
 
         {/* Weekday headers */}
-        <div className="grid grid-cols-7 border-b border-[#E5EDE8] dark:border-[#2a3d2f]">
+        <div className="grid grid-cols-7 border-b border-[#E5EDE8] dark:border-[#2b2e35]">
           {(view === 'week' ? weekdaysLong : weekdaysShort).map((d, i) => (
             <div key={d} className={`py-3 text-center text-xs font-semibold uppercase tracking-wide ${
               view === 'week' && weekDays[i] && toDateStr(weekDays[i]) === todayStr
@@ -339,7 +339,7 @@ export default function CalendarPage() {
           <div className="grid grid-cols-7">
             {monthDays.map((date, i) => {
               if (!date) return (
-                <div key={i} className="min-h-[88px] bg-[#F9FBFA] dark:bg-[#111d14] border-b border-r border-[#E5EDE8] dark:border-[#2a3d2f]" />
+                <div key={i} className="min-h-[88px] bg-[#F9FBFA] dark:bg-[#141518] border-b border-r border-[#E5EDE8] dark:border-[#2b2e35]" />
               )
               const dateStr = toDateStr(date)
               const isToday = dateStr === todayStr
@@ -351,9 +351,9 @@ export default function CalendarPage() {
                 <div
                   key={dateStr}
                   onClick={() => events.length > 0 && setSelectedDay(isSelected ? null : dateStr)}
-                  className={`relative flex flex-col items-center sm:items-start min-h-[60px] sm:min-h-[88px] p-1 sm:p-2 border-b border-r border-[#E5EDE8] dark:border-[#2a3d2f] transition-colors ${
-                    events.length > 0 ? 'cursor-pointer hover:bg-[#F0F7F2] dark:hover:bg-[#0f2a18]' : ''
-                  } ${isSelected ? 'bg-[#F0F7F2] dark:bg-[#0f2a18]' : ''}`}
+                  className={`relative flex flex-col items-center sm:items-start min-h-[60px] sm:min-h-[88px] p-1 sm:p-2 border-b border-r border-[#E5EDE8] dark:border-[#2b2e35] transition-colors ${
+                    events.length > 0 ? 'cursor-pointer hover:bg-[#F0F7F2] dark:hover:bg-[#22252c]' : ''
+                  } ${isSelected ? 'bg-[#F0F7F2] dark:bg-[#22252c]' : ''}`}
                 >
                   <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-sm font-medium ${
                     isToday  ? 'bg-[#4A7C59] text-white'
@@ -428,7 +428,7 @@ export default function CalendarPage() {
 
               return (
                 <div key={dateStr}
-                  className={`relative border-r border-[#E5EDE8] dark:border-[#2a3d2f] p-2 ${isToday ? 'bg-[#F0F7F2] dark:bg-[#0f2a18]' : ''} ${isSelected ? 'ring-2 ring-inset ring-[#4A7C59]/30' : ''}`}
+                  className={`relative border-r border-[#E5EDE8] dark:border-[#2b2e35] p-2 ${isToday ? 'bg-[#F0F7F2] dark:bg-[#22252c]' : ''} ${isSelected ? 'ring-2 ring-inset ring-[#4A7C59]/30' : ''}`}
                 >
                   {/* Day number */}
                   <div className="flex justify-center mb-2">

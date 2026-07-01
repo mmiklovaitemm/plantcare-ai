@@ -121,7 +121,7 @@ function Bubble({ msg, isStreaming }: BubbleProps) {
             className={`relative group px-4 py-3 rounded-2xl text-sm leading-relaxed ${
               isUser
                 ? 'bg-[#4A7C59] text-white rounded-tr-sm'
-                : 'bg-white dark:bg-[#1a2e1f] border border-[#E5EDE8] dark:border-[#2a3d2f] text-[#1A1A1A] dark:text-white rounded-tl-sm cursor-pointer hover:border-[#86EFAC] dark:hover:border-[#4A7C59] transition-colors'
+                : 'bg-white dark:bg-[#1a1c20] border border-[#E5EDE8] dark:border-[#2b2e35] text-[#1A1A1A] dark:text-white rounded-tl-sm cursor-pointer hover:border-[#86EFAC] dark:hover:border-[#4A7C59] transition-colors'
             }`}
           >
             {isUser ? (
@@ -279,7 +279,7 @@ export default function AIChatPage() {
     <div className="flex flex-col h-[calc(100vh-8.5rem)] lg:h-screen">
 
       {/* Header */}
-      <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-b border-[#E5EDE8] dark:border-[#2a3d2f] bg-white dark:bg-[#1a2e1f]">
+      <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-b border-[#E5EDE8] dark:border-[#2b2e35] bg-white dark:bg-[#1a1c20]">
         <div className="max-w-3xl mx-auto flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 bg-[#4A7C59] rounded-xl flex items-center justify-center">
@@ -301,7 +301,7 @@ export default function AIChatPage() {
               <button
                 onClick={() => exportChat(messages)}
                 title={isLt ? 'Eksportuoti' : 'Export chat'}
-                className="p-2 rounded-lg text-[#6B7280] hover:text-[#4A7C59] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-colors"
+                className="p-2 rounded-lg text-[#6B7280] hover:text-[#4A7C59] hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-colors"
               >
                 <Download className="w-4 h-4" />
               </button>
@@ -334,7 +334,7 @@ export default function AIChatPage() {
           {/* Empty state */}
           {messages.length === 0 && (
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="text-center py-12">
-              <div className="w-16 h-16 bg-[#E8F5EC] dark:bg-[#0f2a18] rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[#E8F5EC] dark:bg-[#22252c] rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Sparkles className="w-8 h-8 text-[#4A7C59]" />
               </div>
               <h3 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-[#1A1A1A] dark:text-white mb-1">
@@ -351,7 +351,7 @@ export default function AIChatPage() {
                     key={s}
                     onClick={() => send(s)}
                     disabled={!hasKey}
-                    className="px-4 py-2 bg-white dark:bg-[#1a2e1f] border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-full text-sm text-[#4A7C59] hover:border-[#4A7C59] hover:bg-[#F0F7F2] dark:hover:bg-[#0f2a18] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="px-4 py-2 bg-white dark:bg-[#1a1c20] border border-[#E5EDE8] dark:border-[#2b2e35] rounded-full text-sm text-[#4A7C59] hover:border-[#4A7C59] hover:bg-[#F0F7F2] dark:hover:bg-[#22252c] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     {s}
                   </button>
@@ -377,7 +377,7 @@ export default function AIChatPage() {
                 <div className="w-8 h-8 rounded-xl bg-[#4A7C59] flex items-center justify-center flex-shrink-0">
                   <Bot className="w-4 h-4 text-white" />
                 </div>
-                <div className="px-4 py-3 bg-white dark:bg-[#1a2e1f] border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-2xl rounded-tl-sm flex items-center gap-2">
+                <div className="px-4 py-3 bg-white dark:bg-[#1a1c20] border border-[#E5EDE8] dark:border-[#2b2e35] rounded-2xl rounded-tl-sm flex items-center gap-2">
                   <Loader2 className="w-3.5 h-3.5 text-[#4A7C59] animate-spin" />
                   <span className="text-sm text-[#6B7280] dark:text-[#9ca3af]">
                     {isLt ? 'Galvoja…' : 'Thinking…'}
@@ -402,7 +402,7 @@ export default function AIChatPage() {
       </div>
 
       {/* Input */}
-      <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-t border-[#E5EDE8] dark:border-[#2a3d2f] bg-white dark:bg-[#1a2e1f]">
+      <div className="flex-shrink-0 px-4 sm:px-6 py-4 border-t border-[#E5EDE8] dark:border-[#2b2e35] bg-white dark:bg-[#1a1c20]">
         <div className="max-w-3xl mx-auto">
 
           {/* Image preview bar */}
@@ -415,7 +415,7 @@ export default function AIChatPage() {
                 className="mb-2 overflow-hidden"
               >
                 <div className="relative inline-block">
-                  <img src={imagePreview} alt="preview" className="h-20 w-auto rounded-xl object-cover border border-[#E5EDE8] dark:border-[#2a3d2f]" />
+                  <img src={imagePreview} alt="preview" className="h-20 w-auto rounded-xl object-cover border border-[#E5EDE8] dark:border-[#2b2e35]" />
                   <button
                     onClick={clearImage}
                     className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#4A7C59] rounded-full flex items-center justify-center text-white shadow"
@@ -440,7 +440,7 @@ export default function AIChatPage() {
               onClick={() => fileInputRef.current?.click()}
               disabled={!hasKey || loading}
               title={isLt ? 'Pridėti nuotrauką' : 'Add photo'}
-              className="w-11 h-11 flex items-center justify-center border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-2xl text-[#6B7280] hover:text-[#4A7C59] hover:border-[#4A7C59] transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0 bg-white dark:bg-[#0f1a13]"
+              className="w-11 h-11 flex items-center justify-center border border-[#E5EDE8] dark:border-[#2b2e35] rounded-2xl text-[#6B7280] hover:text-[#4A7C59] hover:border-[#4A7C59] transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0 bg-white dark:bg-[#101114]"
             >
               <ImagePlus className="w-4 h-4" />
             </button>
@@ -455,7 +455,7 @@ export default function AIChatPage() {
                 ? (isLt ? 'Klausk apie savo augalus…' : 'Ask about your plants…')
                 : 'Add API key to enable chat'}
               rows={1}
-              className="flex-1 px-4 py-3 border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-2xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#0f1a13] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all resize-none disabled:opacity-50"
+              className="flex-1 px-4 py-3 border border-[#E5EDE8] dark:border-[#2b2e35] rounded-2xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#101114] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all resize-none disabled:opacity-50"
               style={{ maxHeight: '120px', overflowY: 'hidden' }}
               onInput={e => {
                 const el = e.currentTarget

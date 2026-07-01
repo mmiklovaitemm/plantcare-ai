@@ -117,7 +117,7 @@ export default function DashboardPage() {
             value: totalPlants,
             label: t('dashboard.totalPlants'),
             color: 'text-[#4A7C59]',
-            bg: 'bg-[#E8F5EC] dark:bg-[#0f2a18]',
+            bg: 'bg-[#E8F5EC] dark:bg-[#22252c]',
           },
           {
             icon: <HeartPulse className="w-5 h-5" />,
@@ -140,7 +140,7 @@ export default function DashboardPage() {
             initial="hidden"
             animate="visible"
             variants={cardVariants}
-            className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] p-5"
+            className="bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] p-5"
           >
             <div className={`inline-flex p-2.5 rounded-xl mb-3 ${stat.bg}`}>
               <span className={stat.color}>{stat.icon}</span>
@@ -167,7 +167,7 @@ export default function DashboardPage() {
           initial="hidden"
           animate="visible"
           variants={cardVariants}
-          className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] p-5"
+          className="bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] p-5"
         >
           <div className="flex items-center gap-2 mb-4">
             <Droplets className="w-4 h-4 text-[#4A7C59]" />
@@ -176,7 +176,7 @@ export default function DashboardPage() {
 
           {todayTasks.length === 0 ? (
             <div className="flex flex-col items-center py-8 text-center">
-              <div className="w-12 h-12 bg-[#E8F5EC] dark:bg-[#0f2a18] rounded-2xl flex items-center justify-center mb-3">
+              <div className="w-12 h-12 bg-[#E8F5EC] dark:bg-[#22252c] rounded-2xl flex items-center justify-center mb-3">
                 <CheckCircle2 className="w-6 h-6 text-[#4A7C59]" />
               </div>
               <p className="text-sm font-medium text-[#1A1A1A] dark:text-white">{t('dashboard.noTasksToday')}</p>
@@ -187,12 +187,12 @@ export default function DashboardPage() {
               {todayTasks.map(({ schedule, plant, days }) => (
                 <div
                   key={schedule.id}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-[#F0F7F2] dark:bg-[#0f1a13] border border-[#E5EDE8] dark:border-[#2a3d2f]"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-[#F0F7F2] dark:bg-[#101114] border border-[#E5EDE8] dark:border-[#2b2e35]"
                 >
                   {plant?.photo_url ? (
                     <img src={plant.photo_url} alt={plant?.nickname} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
                   ) : (
-                    <div className="w-10 h-10 rounded-lg bg-[#E8F5EC] dark:bg-[#0f2a18] flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 rounded-lg bg-[#E8F5EC] dark:bg-[#22252c] flex items-center justify-center flex-shrink-0">
                       <Leaf className="w-5 h-5 text-[#86EFAC]" />
                     </div>
                   )}
@@ -222,7 +222,7 @@ export default function DashboardPage() {
           initial="hidden"
           animate="visible"
           variants={cardVariants}
-          className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] p-5"
+          className="bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] p-5"
         >
           <div className="flex items-center gap-2 mb-4">
             <Leaf className="w-4 h-4 text-[#4A7C59]" />
@@ -238,12 +238,12 @@ export default function DashboardPage() {
               {upcomingTasks.map(({ schedule, plant, days }) => (
                 <div
                   key={schedule.id}
-                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-colors"
+                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-colors"
                 >
                   {plant?.photo_url ? (
                     <img src={plant.photo_url} alt={plant?.nickname} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" />
                   ) : (
-                    <div className="w-10 h-10 rounded-lg bg-[#E8F5EC] dark:bg-[#0f2a18] flex items-center justify-center flex-shrink-0">
+                    <div className="w-10 h-10 rounded-lg bg-[#E8F5EC] dark:bg-[#22252c] flex items-center justify-center flex-shrink-0">
                       <Leaf className="w-5 h-5 text-[#86EFAC]" />
                     </div>
                   )}
@@ -253,7 +253,7 @@ export default function DashboardPage() {
                       {days === 1 ? t('dashboard.tomorrow') : t('dashboard.inDaysFull', { count: days })}
                     </p>
                   </div>
-                  <div className="w-8 h-8 rounded-full bg-[#E8F5EC] dark:bg-[#0f2a18] flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-[#E8F5EC] dark:bg-[#22252c] flex items-center justify-center flex-shrink-0">
                     <span className="text-xs font-bold text-[#4A7C59]">{days}d</span>
                   </div>
                 </div>

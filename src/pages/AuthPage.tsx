@@ -44,14 +44,14 @@ export default function AuthPage() {
   const isLT = i18n.language.startsWith('lt')
 
   return (
-    <div className="min-h-screen bg-[#F0F7F2] dark:bg-[#0f1a13] flex items-center justify-center px-4 transition-colors duration-300">
+    <div className="min-h-screen bg-[#F0F7F2] dark:bg-[#101114] flex items-center justify-center px-4 transition-colors duration-300">
 
       {/* Top-right controls */}
       <div className="fixed top-4 right-4 flex items-center gap-2">
         {/* Language toggle */}
         <button
           onClick={() => i18n.changeLanguage(isLT ? 'en' : 'lt')}
-          className="px-3 py-1.5 text-xs font-medium rounded-full border border-[#E5EDE8] dark:border-[#2a3d2f] bg-white dark:bg-[#1a2e1f] text-[#4A7C59] dark:text-[#86EFAC] hover:bg-[#F0F7F2] dark:hover:bg-[#243328] transition-all"
+          className="px-3 py-1.5 text-xs font-medium rounded-full border border-[#E5EDE8] dark:border-[#2b2e35] bg-white dark:bg-[#1a1c20] text-[#4A7C59] dark:text-[#86EFAC] hover:bg-[#F0F7F2] dark:hover:bg-[#22252c] transition-all"
         >
           {isLT ? 'EN' : 'LT'}
         </button>
@@ -59,7 +59,7 @@ export default function AuthPage() {
         {/* Theme toggle */}
         <button
           onClick={toggleTheme}
-          className="p-1.5 rounded-full border border-[#E5EDE8] dark:border-[#2a3d2f] bg-white dark:bg-[#1a2e1f] text-[#6B7280] dark:text-[#86EFAC] hover:bg-[#F0F7F2] dark:hover:bg-[#243328] transition-all"
+          className="p-1.5 rounded-full border border-[#E5EDE8] dark:border-[#2b2e35] bg-white dark:bg-[#1a1c20] text-[#6B7280] dark:text-[#86EFAC] hover:bg-[#F0F7F2] dark:hover:bg-[#22252c] transition-all"
           aria-label="Toggle theme"
         >
           {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -90,17 +90,17 @@ export default function AuthPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white dark:bg-[#1a2e1f] rounded-2xl shadow-sm border border-[#E5EDE8] dark:border-[#2a3d2f] p-8 transition-colors duration-300"
+          className="bg-white dark:bg-[#1a1c20] rounded-2xl shadow-sm border border-[#E5EDE8] dark:border-[#2b2e35] p-8 transition-colors duration-300"
         >
           {/* Mode toggle */}
-          <div className="flex bg-[#F0F7F2] dark:bg-[#0f1a13] rounded-xl p-1 mb-6">
+          <div className="flex bg-[#F0F7F2] dark:bg-[#101114] rounded-xl p-1 mb-6">
             {(['login', 'register'] as Mode[]).map((m) => (
               <button
                 key={m}
                 onClick={() => { setMode(m); setError(null); setSuccess(null) }}
                 className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   mode === m
-                    ? 'bg-white dark:bg-[#1a2e1f] text-[#4A7C59] dark:text-[#86EFAC] shadow-sm'
+                    ? 'bg-white dark:bg-[#1a1c20] text-[#4A7C59] dark:text-[#86EFAC] shadow-sm'
                     : 'text-[#6B7280] dark:text-[#9ca3af] hover:text-[#4A7C59] dark:hover:text-[#86EFAC]'
                 }`}
               >
@@ -123,7 +123,7 @@ export default function AuthPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="name@example.com"
-                  className="w-full pl-10 pr-4 py-2.5 border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#0f1a13] placeholder-[#6B7280] dark:placeholder-[#4b5563] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 border border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#101114] placeholder-[#6B7280] dark:placeholder-[#4b5563] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all"
                 />
               </div>
             </div>
@@ -142,7 +142,7 @@ export default function AuthPage() {
                   required
                   placeholder="••••••••"
                   minLength={6}
-                  className="w-full pl-10 pr-4 py-2.5 border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#0f1a13] placeholder-[#6B7280] dark:placeholder-[#4b5563] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 border border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#101114] placeholder-[#6B7280] dark:placeholder-[#4b5563] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all"
                 />
               </div>
             </div>
@@ -164,7 +164,7 @@ export default function AuthPage() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="text-sm text-[#4A7C59] dark:text-[#86EFAC] bg-[#E8F5EC] dark:bg-[#0f2a18] px-3 py-2 rounded-lg"
+                  className="text-sm text-[#4A7C59] dark:text-[#86EFAC] bg-[#E8F5EC] dark:bg-[#22252c] px-3 py-2 rounded-lg"
                 >
                   {success}
                 </motion.p>

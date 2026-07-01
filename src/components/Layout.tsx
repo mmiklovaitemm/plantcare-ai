@@ -44,7 +44,7 @@ export default function Layout() {
     `flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
       isActive
         ? 'bg-[#4A7C59] text-white shadow-sm'
-        : 'text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#1a2e1f] hover:text-[#4A7C59] dark:hover:text-[#86EFAC]'
+        : 'text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#1a1c20] hover:text-[#4A7C59] dark:hover:text-[#86EFAC]'
     }`
 
   const bottomNavClass = ({ isActive }: { isActive: boolean }) =>
@@ -55,13 +55,13 @@ export default function Layout() {
     }`
 
   return (
-    <div className="min-h-screen bg-[#F0F7F2] dark:bg-[#0f1a13] transition-colors duration-300">
+    <div className="min-h-screen bg-[#F0F7F2] dark:bg-[#101114] transition-colors duration-300">
 
       {/* ── Desktop sidebar ── */}
-      <aside className="hidden lg:flex flex-col fixed inset-y-0 left-0 w-60 bg-white dark:bg-[#1a2e1f] border-r border-[#E5EDE8] dark:border-[#2a3d2f] z-40 transition-colors duration-300">
+      <aside className="hidden lg:flex flex-col fixed inset-y-0 left-0 w-60 bg-white dark:bg-[#1a1c20] border-r border-[#E5EDE8] dark:border-[#2b2e35] z-40 transition-colors duration-300">
 
         {/* Logo */}
-        <div className="flex items-center gap-3 px-6 py-5 border-b border-[#E5EDE8] dark:border-[#2a3d2f]">
+        <div className="flex items-center gap-3 px-6 py-5 border-b border-[#E5EDE8] dark:border-[#2b2e35]">
           <div className="flex items-center justify-center w-9 h-9 bg-[#4A7C59] rounded-xl">
             <Leaf className="w-5 h-5 text-white" />
           </div>
@@ -81,7 +81,7 @@ export default function Layout() {
         </nav>
 
         {/* Bottom controls */}
-        <div className="px-3 py-4 border-t border-[#E5EDE8] dark:border-[#2a3d2f] space-y-1">
+        <div className="px-3 py-4 border-t border-[#E5EDE8] dark:border-[#2b2e35] space-y-1">
           {/* Language + theme row */}
           <div className="flex items-center gap-2 px-3 py-2">
             <button
@@ -92,7 +92,7 @@ export default function Layout() {
             </button>
             <button
               onClick={toggleTheme}
-              className="p-1.5 rounded-lg text-[#6B7280] dark:text-[#9ca3af] hover:text-[#4A7C59] dark:hover:text-[#86EFAC] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-all"
+              className="p-1.5 rounded-lg text-[#6B7280] dark:text-[#9ca3af] hover:text-[#4A7C59] dark:hover:text-[#86EFAC] hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-all"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -116,7 +116,7 @@ export default function Layout() {
       </aside>
 
       {/* ── Mobile header ── */}
-      <header className="lg:hidden fixed top-0 inset-x-0 h-14 bg-white dark:bg-[#1a2e1f] border-b border-[#E5EDE8] dark:border-[#2a3d2f] flex items-center justify-between px-4 z-40 transition-colors duration-300">
+      <header className="lg:hidden fixed top-0 inset-x-0 h-14 bg-white dark:bg-[#1a1c20] border-b border-[#E5EDE8] dark:border-[#2b2e35] flex items-center justify-between px-4 z-40 transition-colors duration-300">
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center w-8 h-8 bg-[#4A7C59] rounded-xl">
             <Leaf className="w-4 h-4 text-white" />
@@ -127,19 +127,19 @@ export default function Layout() {
         </div>
         <div className="flex items-center gap-2">
           <button onClick={() => i18n.changeLanguage(isLT ? 'en' : 'lt')}
-            className="text-xs font-medium text-[#6B7280] dark:text-[#9ca3af] px-2 py-1 rounded-lg hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-colors">
+            className="text-xs font-medium text-[#6B7280] dark:text-[#9ca3af] px-2 py-1 rounded-lg hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-colors">
             {isLT ? 'EN' : 'LT'}
           </button>
           <button onClick={toggleTheme}
-            className="p-1.5 rounded-lg text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-all">
+            className="p-1.5 rounded-lg text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-all">
             {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
           <NavLink to="/settings"
             aria-label={t('nav.settings')}
             className={({ isActive }) => `p-1.5 rounded-lg transition-all ${
               isActive
-                ? 'text-[#4A7C59] dark:text-[#86EFAC] bg-[#F0F7F2] dark:bg-[#0f1a13]'
-                : 'text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13]'
+                ? 'text-[#4A7C59] dark:text-[#86EFAC] bg-[#F0F7F2] dark:bg-[#101114]'
+                : 'text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#101114]'
             }`}>
             <Settings className="w-4 h-4" />
           </NavLink>
@@ -152,7 +152,7 @@ export default function Layout() {
       </main>
 
       {/* ── Mobile bottom nav ── */}
-      <nav className="lg:hidden fixed bottom-0 inset-x-0 bg-white dark:bg-[#1a2e1f] border-t border-[#E5EDE8] dark:border-[#2a3d2f] flex items-center justify-around px-2 py-2 z-40 transition-colors duration-300">
+      <nav className="lg:hidden fixed bottom-0 inset-x-0 bg-white dark:bg-[#1a1c20] border-t border-[#E5EDE8] dark:border-[#2b2e35] flex items-center justify-around px-2 py-2 z-40 transition-colors duration-300">
         {mobileNavItems.map(({ to, icon: Icon, key }) => (
           <NavLink key={to} to={to} className={bottomNavClass}>
             <Icon className="w-5 h-5" />

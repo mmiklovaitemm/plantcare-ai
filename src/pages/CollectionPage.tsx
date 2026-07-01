@@ -50,7 +50,7 @@ export default function CollectionPage() {
           value={search}
           onChange={e => setSearch(e.target.value)}
           placeholder={t('collection.searchPlants')}
-          className="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-[#1a2e1f] border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl text-sm text-[#1A1A1A] dark:text-white placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all"
+          className="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-[#1a1c20] border border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl text-sm text-[#1A1A1A] dark:text-white placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all"
         />
       </div>
 
@@ -65,7 +65,7 @@ export default function CollectionPage() {
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-col items-center justify-center py-24 text-center"
         >
-          <div className="w-20 h-20 bg-[#E8F5EC] dark:bg-[#0f2a18] rounded-2xl flex items-center justify-center mb-4">
+          <div className="w-20 h-20 bg-[#E8F5EC] dark:bg-[#22252c] rounded-2xl flex items-center justify-center mb-4">
             <Leaf className="w-10 h-10 text-[#86EFAC]" />
           </div>
           <h3 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-[#1A1A1A] dark:text-white mb-1">

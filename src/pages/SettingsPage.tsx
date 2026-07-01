@@ -6,8 +6,8 @@ import { supabase } from '../lib/supabase'
 import { useAuth } from '../hooks/useAuth'
 import { useTheme } from '../hooks/useTheme'
 
-const card = 'bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] p-6'
-const inputCls = 'w-full px-4 py-3 border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#0f1a13] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all'
+const card = 'bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] p-6'
+const inputCls = 'w-full px-4 py-3 border border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#101114] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all'
 const labelCls = 'block text-xs font-medium text-[#6B7280] dark:text-[#9ca3af] mb-2 uppercase tracking-wide'
 
 const v = {
@@ -18,7 +18,7 @@ const v = {
 function SectionHeader({ icon, title }: { icon: React.ReactNode; title: string }) {
   return (
     <div className="flex items-center gap-3 mb-6">
-      <div className="w-9 h-9 bg-[#E8F5EC] dark:bg-[#0f2a18] rounded-xl flex items-center justify-center flex-shrink-0">
+      <div className="w-9 h-9 bg-[#E8F5EC] dark:bg-[#22252c] rounded-xl flex items-center justify-center flex-shrink-0">
         {icon}
       </div>
       <h2 className="font-semibold text-[#1A1A1A] dark:text-white text-base">{title}</h2>
@@ -127,7 +127,7 @@ export default function SettingsPage() {
               {/* Email – read only */}
               <div>
                 <label className={labelCls}>Email</label>
-                <div className="w-full px-4 py-3 border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl text-sm text-[#6B7280] dark:text-[#9ca3af] bg-[#F0F7F2] dark:bg-[#0f1a13]">
+                <div className="w-full px-4 py-3 border border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl text-sm text-[#6B7280] dark:text-[#9ca3af] bg-[#F0F7F2] dark:bg-[#101114]">
                   {user?.email}
                 </div>
               </div>
@@ -192,7 +192,7 @@ export default function SettingsPage() {
                 className={`flex-1 flex items-center justify-center gap-2.5 py-3 rounded-xl border text-sm font-medium transition-all ${
                   i18n.language === lang.code
                     ? 'bg-[#4A7C59] text-white border-[#4A7C59]'
-                    : 'border-[#E5EDE8] dark:border-[#2a3d2f] text-[#1A1A1A] dark:text-white hover:border-[#4A7C59]'
+                    : 'border-[#E5EDE8] dark:border-[#2b2e35] text-[#1A1A1A] dark:text-white hover:border-[#4A7C59]'
                 }`}
               >
                 <span className="text-base">{lang.flag}</span>
@@ -219,7 +219,7 @@ export default function SettingsPage() {
                 className={`flex-1 flex items-center justify-center gap-2.5 py-3 rounded-xl border text-sm font-medium transition-all ${
                   theme === opt.value
                     ? 'bg-[#4A7C59] text-white border-[#4A7C59]'
-                    : 'border-[#E5EDE8] dark:border-[#2a3d2f] text-[#1A1A1A] dark:text-white hover:border-[#4A7C59]'
+                    : 'border-[#E5EDE8] dark:border-[#2b2e35] text-[#1A1A1A] dark:text-white hover:border-[#4A7C59]'
                 }`}
               >
                 {opt.icon}

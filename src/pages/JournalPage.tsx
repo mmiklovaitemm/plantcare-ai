@@ -68,18 +68,18 @@ function AddEntryModal({ onClose }: AddModalProps) {
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md z-50 px-4"
       >
-        <div className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] shadow-xl p-6">
+        <div className="bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] shadow-xl p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-[#E8F5EC] dark:bg-[#0f2a18] rounded-xl flex items-center justify-center">
+              <div className="w-9 h-9 bg-[#E8F5EC] dark:bg-[#22252c] rounded-xl flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-[#4A7C59]" />
               </div>
               <h2 className="font-[family-name:var(--font-heading)] text-lg font-bold text-[#1A1A1A] dark:text-white">
                 {t('journal.addEntry')}
               </h2>
             </div>
-            <button onClick={onClose} className="p-1.5 rounded-lg text-[#6B7280] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-colors">
+            <button onClick={onClose} className="p-1.5 rounded-lg text-[#6B7280] hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-colors">
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -95,7 +95,7 @@ function AddEntryModal({ onClose }: AddModalProps) {
                   value={plantId}
                   onChange={e => setPlantId(e.target.value)}
                   required
-                  className="w-full appearance-none px-4 py-2.5 border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#0f1a13] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all pr-10"
+                  className="w-full appearance-none px-4 py-2.5 border border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#101114] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all pr-10"
                 >
                   <option value="">{t('journal.selectPlant')}</option>
                   {plants?.map(p => (
@@ -114,7 +114,7 @@ function AddEntryModal({ onClose }: AddModalProps) {
               <input ref={fileRef} type="file" accept="image/*" onChange={handleFile} className="hidden" />
               {photoPreview ? (
                 <div className="relative">
-                  <img src={photoPreview} alt="preview" className="w-full h-44 object-cover rounded-xl border border-[#E5EDE8] dark:border-[#2a3d2f]" />
+                  <img src={photoPreview} alt="preview" className="w-full h-44 object-cover rounded-xl border border-[#E5EDE8] dark:border-[#2b2e35]" />
                   <button type="button" onClick={() => { setPhotoFile(null); setPhotoPreview(null) }}
                     className="absolute top-2 right-2 p-1 bg-black/50 rounded-lg text-white">
                     <X className="w-3.5 h-3.5" />
@@ -122,7 +122,7 @@ function AddEntryModal({ onClose }: AddModalProps) {
                 </div>
               ) : (
                 <button type="button" onClick={() => fileRef.current?.click()}
-                  className="w-full h-32 border-2 border-dashed border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl flex flex-col items-center justify-center gap-2 text-[#6B7280] hover:border-[#4A7C59] hover:text-[#4A7C59] transition-all">
+                  className="w-full h-32 border-2 border-dashed border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl flex flex-col items-center justify-center gap-2 text-[#6B7280] hover:border-[#4A7C59] hover:text-[#4A7C59] transition-all">
                   <Camera className="w-6 h-6" />
                   <span className="text-sm">{t('journal.uploadPhoto')}</span>
                 </button>
@@ -139,14 +139,14 @@ function AddEntryModal({ onClose }: AddModalProps) {
                 onChange={e => setNotes(e.target.value)}
                 placeholder={t('journal.notesPlaceholder')}
                 rows={3}
-                className="w-full px-4 py-2.5 border border-[#E5EDE8] dark:border-[#2a3d2f] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#0f1a13] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all resize-none"
+                className="w-full px-4 py-2.5 border border-[#E5EDE8] dark:border-[#2b2e35] rounded-xl text-sm text-[#1A1A1A] dark:text-white bg-white dark:bg-[#101114] placeholder-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#4A7C59]/30 focus:border-[#4A7C59] transition-all resize-none"
               />
             </div>
 
             {/* Actions */}
             <div className="flex gap-3 pt-1">
               <button type="button" onClick={onClose}
-                className="flex-1 py-2.5 rounded-full border border-[#E5EDE8] dark:border-[#2a3d2f] text-sm font-medium text-[#6B7280] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-all">
+                className="flex-1 py-2.5 rounded-full border border-[#E5EDE8] dark:border-[#2b2e35] text-sm font-medium text-[#6B7280] hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-all">
                 {t('common.cancel')}
               </button>
               <button type="submit" disabled={saving || !plantId}
@@ -174,7 +174,7 @@ function EntryCard({ entry, onDelete }: {
     <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white dark:bg-[#1a2e1f] rounded-2xl border border-[#E5EDE8] dark:border-[#2a3d2f] overflow-hidden group hover:shadow-md hover:border-[#86EFAC] dark:hover:border-[#4A7C59] transition-all duration-200"
+      className="bg-white dark:bg-[#1a1c20] rounded-2xl border border-[#E5EDE8] dark:border-[#2b2e35] overflow-hidden group hover:shadow-md hover:border-[#86EFAC] dark:hover:border-[#4A7C59] transition-all duration-200"
     >
       {/* Photo */}
       {entry.photo_url && (
@@ -201,7 +201,7 @@ function EntryCard({ entry, onDelete }: {
             {entry.plants?.photo_url ? (
               <img src={entry.plants.photo_url} alt={entry.plants.nickname} className="w-6 h-6 rounded-lg object-cover shrink-0" />
             ) : (
-              <div className="w-6 h-6 rounded-lg bg-[#E8F5EC] dark:bg-[#0f2a18] flex items-center justify-center shrink-0">
+              <div className="w-6 h-6 rounded-lg bg-[#E8F5EC] dark:bg-[#22252c] flex items-center justify-center shrink-0">
                 <Leaf className="w-3 h-3 text-[#86EFAC]" />
               </div>
             )}
@@ -277,7 +277,7 @@ export default function JournalPage() {
             className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
               !filterPlant
                 ? 'bg-[#4A7C59] text-white border-[#4A7C59]'
-                : 'border-[#E5EDE8] dark:border-[#2a3d2f] text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59]'
+                : 'border-[#E5EDE8] dark:border-[#2b2e35] text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59]'
             }`}
           >
             {t('journal.allPlants')}
@@ -289,7 +289,7 @@ export default function JournalPage() {
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border transition-all ${
                 filterPlant === p.id
                   ? 'bg-[#4A7C59] text-white border-[#4A7C59]'
-                  : 'border-[#E5EDE8] dark:border-[#2a3d2f] text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59]'
+                  : 'border-[#E5EDE8] dark:border-[#2b2e35] text-[#6B7280] dark:text-[#9ca3af] hover:border-[#4A7C59]'
               }`}
             >
               {p.photo_url && <img src={p.photo_url} alt={p.nickname} className="w-4 h-4 rounded-full object-cover" />}
@@ -306,7 +306,7 @@ export default function JournalPage() {
         </div>
       ) : !filtered?.length ? (
         <div className="flex flex-col items-center justify-center py-24 text-center">
-          <div className="w-20 h-20 bg-[#E8F5EC] dark:bg-[#0f2a18] rounded-2xl flex items-center justify-center mb-4">
+          <div className="w-20 h-20 bg-[#E8F5EC] dark:bg-[#22252c] rounded-2xl flex items-center justify-center mb-4">
             <BookOpen className="w-10 h-10 text-[#86EFAC]" />
           </div>
           <h3 className="font-[family-name:var(--font-heading)] text-lg font-semibold text-[#1A1A1A] dark:text-white mb-1">
