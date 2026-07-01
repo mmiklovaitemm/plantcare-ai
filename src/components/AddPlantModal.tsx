@@ -87,14 +87,19 @@ export default function AddPlantModal({ open, onClose }: Props) {
       if (mapped[0] && !nickname) setNickname(mapped[0].name)
 
       if (mapped[0]) {
-        const care = await getPlantCareData(mapped[0].scientificName)
-        if (care) {
-          setWaterInterval(care.wateringInterval)
-          setCareHint(t('addPlant.aiSuggestedCare', { label: care.wateringLabel }))
+        try {
+          const care = await getPlantCareData(mapped[0].scientificName)
+          if (care) {
+            setWaterInterval(care.wateringInterval)
+            setCareHint(t('addPlant.aiSuggestedCare', { label: care.wateringLabel }))
+          }
+        } catch (careErr) {
+          console.error('Care data lookup failed:', careErr)
         }
       }
-    } catch {
-      setIdentifyError(t('addPlant.identifyError'))
+    } catch (err) {
+      const detail = err instanceof Error ? err.message : String(err)
+      setIdentifyError(`${t('addPlant.identifyError')} [${detail}]`)
     } finally {
       setIdentifying(false)
     }
