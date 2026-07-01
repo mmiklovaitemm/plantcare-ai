@@ -49,6 +49,7 @@ export default function AddPlantModal({ open, onClose }: Props) {
   const [suggestions, setSuggestions] = useState<{ name: string; score: number; scientificName: string }[]>([])
   const [identifyError, setIdentifyError] = useState<string | null>(null)
   const [careHint, setCareHint] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
 
   function reset() {
     setNickname('')
@@ -107,33 +108,44 @@ export default function AddPlantModal({ open, onClose }: Props) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    // Guard against double submission: the photo upload happens before the
+    // mutations start, so relying on the mutation pending state alone would
+    // leave the button active (and re-submittable) during that upload.
+    if (submitting) return
+    setSubmitting(true)
 
-    let photoUrl: string | null = null
-    if (photoFile && user) {
-      photoUrl = await uploadPlantPhoto(photoFile, user.id)
+    try {
+      let photoUrl: string | null = null
+      if (photoFile && user) {
+        photoUrl = await uploadPlantPhoto(photoFile, user.id)
+      }
+
+      const plant = await addPlant.mutateAsync({
+        nickname,
+        room: room || null,
+        health_status: health,
+        photo_url: photoUrl,
+        api_plant_id: null,
+      })
+
+      const today = new Date().toISOString().split('T')[0]
+      await addSchedule.mutateAsync({
+        plant_id: plant.id,
+        action_type: 'water',
+        interval_days: waterInterval,
+        next_due: today,
+      })
+
+      reset()
+      onClose()
+    } catch (err) {
+      console.error('Failed to save plant:', err)
+    } finally {
+      setSubmitting(false)
     }
-
-    const plant = await addPlant.mutateAsync({
-      nickname,
-      room: room || null,
-      health_status: health,
-      photo_url: photoUrl,
-      api_plant_id: null,
-    })
-
-    const today = new Date().toISOString().split('T')[0]
-    await addSchedule.mutateAsync({
-      plant_id: plant.id,
-      action_type: 'water',
-      interval_days: waterInterval,
-      next_due: today,
-    })
-
-    reset()
-    onClose()
   }
 
-  const isPending = addPlant.isPending || addSchedule.isPending
+  const isPending = submitting || addPlant.isPending || addSchedule.isPending
 
   return (
     <AnimatePresence>
