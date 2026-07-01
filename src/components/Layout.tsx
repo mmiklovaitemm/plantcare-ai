@@ -134,6 +134,15 @@ export default function Layout() {
             className="p-1.5 rounded-lg text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13] transition-all">
             {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
+          <NavLink to="/settings"
+            aria-label={t('nav.settings')}
+            className={({ isActive }) => `p-1.5 rounded-lg transition-all ${
+              isActive
+                ? 'text-[#4A7C59] dark:text-[#86EFAC] bg-[#F0F7F2] dark:bg-[#0f1a13]'
+                : 'text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#0f1a13]'
+            }`}>
+            <Settings className="w-4 h-4" />
+          </NavLink>
         </div>
       </header>
 
