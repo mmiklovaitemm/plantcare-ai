@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Colors */
+  --color-white: #FFFFFF;
+  --color-green-pale: #F0F7F2;
+  --color-green-tint: #E8F5EC;
+  --color-green-light: #86EFAC;
+  --color-green-mid: #6BAF7A;
+  --color-green-main: #4A7C59;
+  --color-green-dark: #3A6647;
+  --color-text-main: #1A1A1A;
+  --color-text-sub: #6B7280;
+  --color-border: #E5EDE8;
+
+  /* Fonts */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Border radius */
+  --radius-card: 1rem;
+  --radius-btn: 9999px;
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-body);
+    color: var(--color-text-main);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-text-main);
+  }
+
+  #root {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+}
