@@ -27,7 +27,12 @@ export interface PlantCareData {
 }
 
 export async function searchPerenual(query: string, page = 1): Promise<{ data: PerenualSpecies[]; lastPage: number }> {
-  const url = `/perenual-api/api/species-list?key=${API_KEY}&q=${encodeURIComponent(query)}&page=${page}`
+  // In dev the Vite proxy forwards to Perenual with the local key in the query.
+  // In production the /api/perenual edge function injects the key server-side so
+  // it is never exposed in the browser.
+  const url = import.meta.env.DEV
+    ? `/perenual-api/api/species-list?key=${API_KEY}&q=${encodeURIComponent(query)}&page=${page}`
+    : `/api/perenual?q=${encodeURIComponent(query)}&page=${page}`
   const res = await fetch(url)
   if (!res.ok) throw new Error(`Perenual API error: ${res.status}`)
   const json: PerenualSearchResponse = await res.json()

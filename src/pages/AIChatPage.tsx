@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Send, Loader2, Bot, Sparkles, ImagePlus, X, Download, Copy, Check } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
-import { sendChatMessageStream, type ChatMessage, type ImageData } from '../lib/gemini'
+import { sendChatMessageStream, isAiConfigured, type ChatMessage, type ImageData } from '../lib/gemini'
 import { usePlants } from '../hooks/usePlants'
 
 const SUGGESTIONS = {
@@ -179,7 +179,7 @@ export default function AIChatPage() {
   const inputRef = useRef<HTMLTextAreaElement>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const hasKey = !!import.meta.env.VITE_GEMINI_API_KEY
+  const hasKey = isAiConfigured
   const isLt = i18n.language.startsWith('lt')
   const suggestions = isLt ? SUGGESTIONS.lt : SUGGESTIONS.en
 
