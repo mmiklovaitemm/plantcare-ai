@@ -1,6 +1,22 @@
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string
 const MODEL = 'gemini-2.5-flash'
-const BASE_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}`
+
+// Whether AI features should be offered. In production the /api/gemini function
+// holds the key, so AI is always available; in dev it depends on the local key.
+export const isAiConfigured = import.meta.env.PROD || !!API_KEY
+
+// In production, calls go through the /api/gemini edge function, which keeps the
+// API key on the server. In dev (no serverless functions) we call Google
+// directly with the local VITE key.
+function geminiUrl(stream: boolean): string {
+  if (import.meta.env.DEV) {
+    const base = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}`
+    return stream
+      ? `${base}:streamGenerateContent?alt=sse&key=${API_KEY}`
+      : `${base}:generateContent?key=${API_KEY}`
+  }
+  return stream ? '/api/gemini?stream=1' : '/api/gemini'
+}
 
 export interface ChatMessage {
   role: 'user' | 'assistant'
@@ -85,7 +101,7 @@ export async function sendChatMessage(
   messages: ChatMessage[],
   systemPrompt: string,
 ): Promise<string> {
-  const res = await fetch(`${BASE_URL}:generateContent?key=${API_KEY}`, {
+  const res = await fetch(geminiUrl(false), {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({
@@ -111,7 +127,7 @@ export async function sendChatMessageStream(
   onChunk: (text: string) => void,
   image?: ImageData,
 ): Promise<void> {
-  const res = await fetch(`${BASE_URL}:streamGenerateContent?alt=sse&key=${API_KEY}`, {
+  const res = await fetch(geminiUrl(true), {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify({

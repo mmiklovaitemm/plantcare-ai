@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Sparkles, RefreshCw, Loader2 } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
-import { sendChatMessage } from '../lib/gemini'
+import { sendChatMessage, isAiConfigured } from '../lib/gemini'
 
 const CACHE_KEY = 'plantcare-ai-summary'
 const CACHE_DATE_KEY = 'plantcare-ai-summary-date'
@@ -30,7 +30,7 @@ export default function AiSummaryWidget({ plants, schedules, isLt }: Props) {
   }, [plants.length])
 
   async function generate() {
-    if (!plants.length || !import.meta.env.VITE_GEMINI_API_KEY) return
+    if (!plants.length || !isAiConfigured) return
     setLoading(true)
     try {
       const today = new Date().toISOString().split('T')[0]
@@ -57,7 +57,7 @@ Give me a quick care tip and a motivating note for this week.`
     }
   }
 
-  if (!plants.length || !import.meta.env.VITE_GEMINI_API_KEY) return null
+  if (!plants.length || !isAiConfigured) return null
 
   return (
     <motion.div

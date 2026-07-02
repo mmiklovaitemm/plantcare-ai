@@ -1,7 +1,5 @@
 {
   "rewrites": [
-    { "source": "/anthropic-api/:path*", "destination": "https://api.anthropic.com/:path*" },
-    { "source": "/perenual-api/:path*", "destination": "https://perenual.com/:path*" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }
