@@ -88,14 +88,21 @@ export default function AddPlantModal({ open, onClose }: Props) {
       if (mapped[0] && !nickname) setNickname(mapped[0].name)
 
       if (mapped[0]) {
+        let specificHint = false
         try {
           const care = await getPlantCareData(mapped[0].scientificName)
           if (care) {
             setWaterInterval(care.wateringInterval)
             setCareHint(t('addPlant.aiSuggestedCare', { label: care.wateringLabel }))
+            specificHint = true
           }
         } catch (careErr) {
           console.error('Care data lookup failed:', careErr)
+        }
+        // Even when the care database has no match, make it clear the schedule
+        // is an AI recommendation for the identified plant.
+        if (!specificHint) {
+          setCareHint(t('addPlant.aiSuggestedCareGeneric', { plant: mapped[0].name }))
         }
       }
     } catch (err) {
