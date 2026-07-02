@@ -134,6 +134,15 @@ export default function Layout() {
             className="p-1.5 rounded-lg text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#101114] transition-all">
             {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
+          <NavLink to="/encyclopedia"
+            aria-label={t('nav.encyclopedia')}
+            className={({ isActive }) => `p-1.5 rounded-lg transition-all ${
+              isActive
+                ? 'text-[#4A7C59] dark:text-[#86EFAC] bg-[#F0F7F2] dark:bg-[#101114]'
+                : 'text-[#6B7280] dark:text-[#9ca3af] hover:bg-[#F0F7F2] dark:hover:bg-[#101114]'
+            }`}>
+            <BookOpen className="w-4 h-4" />
+          </NavLink>
           <NavLink to="/settings"
             aria-label={t('nav.settings')}
             className={({ isActive }) => `p-1.5 rounded-lg transition-all ${
