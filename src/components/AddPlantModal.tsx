@@ -6,6 +6,7 @@ import { useAddPlant } from '../hooks/usePlants'
 import { useAddCareSchedule } from '../hooks/useCareSchedule'
 import { identifyPlant } from '../lib/plantnet'
 import { getPlantCareData } from '../lib/perenual'
+import { analyzePlantCare } from '../lib/gemini'
 import { uploadPlantPhoto } from '../lib/storage'
 import { useAuth } from '../hooks/useAuth'
 import type { Plant } from '../types'
@@ -33,7 +34,7 @@ interface Props {
 }
 
 export default function AddPlantModal({ open, onClose }: Props) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { user } = useAuth()
   const addPlant = useAddPlant()
   const addSchedule = useAddCareSchedule()
@@ -88,14 +89,38 @@ export default function AddPlantModal({ open, onClose }: Props) {
       if (mapped[0] && !nickname) setNickname(mapped[0].name)
 
       if (mapped[0]) {
-        try {
-          const care = await getPlantCareData(mapped[0].scientificName)
-          if (care) {
-            setWaterInterval(care.wateringInterval)
-            setCareHint(t('addPlant.aiSuggestedCare', { label: care.wateringLabel }))
+        let hintSet = false
+
+        // Primary: a real AI analysis of the identified plant (watering
+        // interval + a short care explanation written in the user's language).
+        const analysis = await analyzePlantCare(
+          mapped[0].name,
+          mapped[0].scientificName,
+          i18n.language,
+        )
+        if (analysis) {
+          setWaterInterval(analysis.wateringIntervalDays)
+          setCareHint(analysis.analysis)
+          hintSet = true
+        }
+
+        // Fallback: the Perenual care database.
+        if (!hintSet) {
+          try {
+            const care = await getPlantCareData(mapped[0].scientificName)
+            if (care) {
+              setWaterInterval(care.wateringInterval)
+              setCareHint(t('addPlant.aiSuggestedCare', { label: care.wateringLabel }))
+              hintSet = true
+            }
+          } catch (careErr) {
+            console.error('Care data lookup failed:', careErr)
           }
-        } catch (careErr) {
-          console.error('Care data lookup failed:', careErr)
+        }
+
+        // Last resort: still make it clear the schedule is an AI recommendation.
+        if (!hintSet) {
+          setCareHint(t('addPlant.aiSuggestedCareGeneric', { plant: mapped[0].name }))
         }
       }
     } catch (err) {

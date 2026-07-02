@@ -83,7 +83,7 @@ export default function PlantCard({ plant, waterSchedule }: Props) {
         <button
           onClick={handleDelete}
           disabled={deletePlant.isPending}
-          className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 p-1.5 rounded-lg bg-white/80 dark:bg-black/50 text-[#6B7280] hover:text-red-500 transition-all disabled:opacity-60"
+          className="absolute top-2 right-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 p-1.5 rounded-lg bg-black/55 backdrop-blur-sm text-white shadow-sm hover:bg-red-500 transition-all disabled:opacity-60"
           aria-label={t('common.delete')}
         >
           <Trash2 className="w-3.5 h-3.5" />

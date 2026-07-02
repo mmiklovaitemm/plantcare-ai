@@ -92,6 +92,7 @@
     "identifyWithAi": "Identify with AI",
     "identifyError": "Could not identify plant. Try a clearer photo.",
     "aiSuggestedCare": "AI suggested: {{label}} based on plant data",
+    "aiSuggestedCareGeneric": "AI suggested this watering schedule based on {{plant}}'s needs",
     "nameLabel": "Plant name / nickname",
     "namePlaceholder": "e.g. Monstera, My little cactus...",
     "wateringSchedule": "Watering schedule",

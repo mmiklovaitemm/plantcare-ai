@@ -92,6 +92,7 @@
     "identifyWithAi": "Atpažinti su AI",
     "identifyError": "Nepavyko atpažinti augalo. Bandykite aiškesnę nuotrauką.",
     "aiSuggestedCare": "AI pasiūlė: {{label}} pagal augalo duomenis",
+    "aiSuggestedCareGeneric": "AI pasiūlė šį laistymo grafiką pagal {{plant}} poreikius",
     "nameLabel": "Augalo vardas / slapyvardis",
     "namePlaceholder": "pvz. Monstera, Mano mažas kaktusas...",
     "wateringSchedule": "Laistymo grafikas",
