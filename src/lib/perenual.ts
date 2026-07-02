@@ -36,7 +36,29 @@ export async function searchPerenual(query: string, page = 1): Promise<{ data: P
   const res = await fetch(url)
   if (!res.ok) throw new Error(`Perenual API error: ${res.status}`)
   const json: PerenualSearchResponse = await res.json()
-  return { data: json.data ?? [], lastPage: json.last_page ?? 1 }
+  return { data: rankByRelevance(json.data ?? [], query), lastPage: json.last_page ?? 1 }
+}
+
+// Perenual's free-tier search returns many loosely-matched results (e.g. a
+// search for "yucca" surfaces unrelated plants that only share a fragment).
+// Re-rank so species whose common or scientific name actually contains the
+// query appear first, without dropping anything.
+function relevanceScore(species: PerenualSpecies, q: string): number {
+  const common = species.common_name?.toLowerCase() ?? ''
+  const scientific = (species.scientific_name ?? []).join(' ').toLowerCase()
+  if (common === q) return 4
+  if (common.startsWith(q)) return 3
+  if (common.includes(q) || scientific.includes(q)) return 2
+  return 0
+}
+
+function rankByRelevance(data: PerenualSpecies[], query: string): PerenualSpecies[] {
+  const q = query.toLowerCase().trim()
+  if (!q) return data
+  return data
+    .map((species, i) => ({ species, i, score: relevanceScore(species, q) }))
+    .sort((a, b) => b.score - a.score || a.i - b.i)
+    .map(({ species }) => species)
 }
 
 export async function getPlantCareData(scientificName: string): Promise<PlantCareData | null> {
